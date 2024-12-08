@@ -199,6 +199,40 @@ document.getElementById('open').addEventListener('click', () => {
     }, 2000)
 })
 
+//Count down
+const targetDate = new Date('2024-12-15T07:00:00'); // Tanggal tujuan
+
+function updateCountdown() {
+    const now = new Date();
+    const difference = targetDate - now;
+
+    // Hitung waktu tersisa
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((difference / (1000 * 60)) % 60);
+    const seconds = Math.floor((difference / 1000) % 60);
+
+    // Update elemen HTML
+    document.querySelector('.circle1 h1').textContent = days;
+    document.querySelector('.circle2 h1').textContent = hours;
+    document.querySelector('.circle3 h1').textContent = minutes;
+    document.querySelector('.circle4 h1').textContent = seconds;
+
+    // Tambahkan kondisi jika countdown selesai
+    if (difference <= 0) {
+        clearInterval(interval); // Hentikan interval
+        document.querySelector('.circles').innerHTML = `
+            <h1 class="title4 text-[50px] text-center mt-[-5px]" style="font-family: 'Passions Conflict', cursive;">
+                The Event Has Started!
+            </h1>
+        `;
+    }
+    
+}
+
+// Jalankan fungsi setiap 1 detik
+const interval = setInterval(updateCountdown, 1000);
+
 
 // END JS ANIMATION
 
