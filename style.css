@@ -654,3 +654,10 @@ ul li a.active svg {
         min-height: 40px;
     }
 }
+
+.circle h1 {
+    font-size: clamp(20px, 5vw, 40px);
+}
+.circle p {
+    font-size: clamp(10px, 2.5vw, 20px);
+}
